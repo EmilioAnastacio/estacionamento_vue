@@ -4,10 +4,10 @@
 
 <div class="col col-md-9 align-items-start">
   <div class="row align-items-center">
-    <h2 class="col col-md-4 align-items-center">Lista de Marcas</h2>
-    <button type="button" class="btn btn-success col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Cadastrar Marca</button>
-    <button type="button" class="btn btn-primary col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar Marca</button>
-    <button type="button" class="btn btn-danger col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar Marca</button>
+    <h2 class="col col-md-3 align-items-center">Lista de Marcas</h2>
+    <button type="button" class="btn btn-success col col-md-1" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Cadastrar</button>
+    <!-- <button type="button" class="btn btn-primary col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar Marca</button>
+    <button type="button" class="btn btn-danger col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar Marca</button> -->
   </div>
 </div>
 
@@ -16,7 +16,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Marca</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="fechaModal()"></button>
       </div>
       <div class="modal-body">
         <form>
@@ -39,8 +39,9 @@
   <table class="table">
   <thead>
     <tr>
-      <th scope="col" class="p-2">#</th>
+      <th scope="col" class="p-2">ID</th>
       <th scope="col" class="p-2">Nome da Marca</th>
+      <th scope="col colspan-2" class="p-2">Estado</th>
 
     </tr>
   </thead>
@@ -48,7 +49,36 @@
       <tr>
         <th scope="row">1</th>
         <td>Fiat</td>
+        <td>
+          <div class="d-flex gap-2 justify-content-center">
+            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
+            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
+          </div>
+        </td>
       </tr>
+
+      <tr>
+        <th scope="row">2</th>
+        <td>Chevrolet</td>
+        <td>
+          <div class="d-flex gap-2 justify-content-center">
+            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
+            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th scope="row">3</th>
+        <td>PSG</td>
+        <td>
+          <div class="d-flex gap-2 justify-content-center">
+            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
+            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
+          </div>
+        </td>
+      </tr>
+
     </tbody>
   </table>
 </div>
@@ -56,10 +86,6 @@
 
 <style scoped>
 
-.empurra_botao{
-  margin-left: 1%;
-  width: 10%;
-}
 </style>
 
 <script lang="ts">
@@ -67,7 +93,10 @@
 import { defineComponent } from 'vue';
 import NavBar from '@/components/NavBar.vue'; // @ is an alias to /src
 import adicionaMarca from '@/components/adicionaMarca.vue';
-//import axiosMarca from '@/client/marca.client';
+//import { MarcaClient } from '@/client/marca.client';
+//import { Marca } from '@/model/marca';
+
+import { onMounted, reactive, toRefs } from 'vue';
 
 export default defineComponent({
   name: 'MarcaListaView',
