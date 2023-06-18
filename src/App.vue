@@ -33,3 +33,7 @@ nav {
   }
 }
 </style>
+
+<script lang="ts">
+
+</script>
