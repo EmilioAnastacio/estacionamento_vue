@@ -1,5 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-azul">
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Estacionamento</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,25 +10,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Movimentação</a>
+          <router-link to="/">Home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Condutor</a>
+          <router-link to="/condutor">Condutor</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Veiculo</a>
+          <router-link to="/veiculo">Veiculo</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Marca</a>
+          <router-link to="/marca">Marca</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Modelo</a>
+          <router-link to="/modelo">Modelo</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Configuração</a>
+          <router-link to="/configuracao">Configuração</router-link>
         </li>
       </ul>
-      <router-link to="/marca"> <button type="button" class="btn">SAIR</button>  </router-link>
+
+      <button type="button" class="btn btn-danger">Fechar</button>
+
     </div>
   </div>
 </nav>
@@ -45,6 +49,7 @@
 
 
 <script lang="ts">
+
 import { defineComponent } from 'vue';
 
 export default defineComponent({

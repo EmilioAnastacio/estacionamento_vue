@@ -16,7 +16,33 @@ const routes: Array<RouteRecordRaw> = [
     path: '/marca',
     name: 'marca-lista-view',
     component: () => import(/* webpackChunkName: "about" */ '../views/marca/MarcaListaView.vue')
-  }
+  },
+  {
+    path: '/modelo',
+    name: 'modelo-lista-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/modelo/ModeloListaView.vue')
+  },
+  {
+    path: '/movimentacao',
+    name: 'movimentacao-lista-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoListaView.vue')
+  },
+  {
+    path: '/veiculo',
+    name: 'veiculo-lista-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoListaView.vue')
+  },
+  {
+    path: '/condutor',
+    name: 'condutor-lista-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/condutor/CondutorListaView.vue')
+  },
+  {
+    path: '/configuracao',
+    name: 'configuracao-lista-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/configuracao/ConfiguracaoListaView.vue')
+  },
+
 
 ]
 
