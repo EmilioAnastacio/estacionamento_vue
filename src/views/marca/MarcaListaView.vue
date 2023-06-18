@@ -2,6 +2,7 @@
 
   <NavBar></NavBar>
 
+
 <div class="col col-md-9 align-items-start">
   <div class="row align-items-center">
     <h2 class="col col-md-3 align-items-center">Lista de Marcas</h2>
@@ -37,15 +38,21 @@
 
 <div class="container">
   <table class="table">
+
   <thead>
     <tr>
+
       <th scope="col" class="p-2">ID</th>
       <th scope="col" class="p-2">Nome da Marca</th>
       <th scope="col colspan-2" class="p-2">Estado</th>
 
     </tr>
   </thead>
-    <tbody>
+    <tbody class="table-group-divider">
+      <tr>
+        <th scope="row">1</th>
+        <td>Fiat</td>
+      </tr>
       <tr>
         <th scope="row">1</th>
         <td>Fiat</td>
@@ -84,9 +91,11 @@
 </div>
 </template>
 
+
 <style scoped>
 
 </style>
+
 
 <script lang="ts">
 
