@@ -1,5 +1,7 @@
 <template>
+
   <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Estacionamento</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +28,9 @@
           <router-link to="/configuracao">Configuração</router-link>
         </li>
       </ul>
+
       <button type="button" class="btn btn-danger">Fechar</button>
+
     </div>
   </div>
 </nav>
@@ -34,9 +38,9 @@
 
 <style lang="scss">
 
-  #NAVBAR{
-    background-color: aqua;
-  }
+.bg-azul{
+  background-color: rgb(250, 100, 255);
+}
   li{
     margin-left: 5%;
   }
