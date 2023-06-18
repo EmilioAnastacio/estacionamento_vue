@@ -22,44 +22,34 @@
 
         <form class="row g-3">
 
-          <div class="col-md-4">
-            <label for="inicioVali" class="form-label">Nome</label>
+          <div class="col-md-9">
+            <label for="inicioVali" class="form-label row ms-1">Nome:</label>
             <input type="text" class="form-control" id="inicioVali" aria-describedby="inicioEXPinput" required>
           </div>
 
-          <div class="col-md-4">
-            <label for="fimVali" class="form-label">cpf</label>
+          <div class="col-md-6">
+            <label for="fimVali" class="form-label row ms-1">Cpf:</label>
             <input type="text" class="form-control" id="fimVali"  required>
           </div>
 
-          <div class="col-md-4">
-            <label for="tempoDescVali" class="form-label">Tempo Desconto</label>
-            <input type="text" class="form-control" id="tempoDescVali"  required>
+          <div class="col-md-6">
+            <label for="tempoDescVali" class="form-label row ms-1">Telefone</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">#</span>
+              <input type="text" class="form-control" id="tempoDescVali"  required>
+            </div>
+            
           </div>
 
-          <div class="col-md-4">
-            <label for="vagasMotoVali" class="form-label">Vagas Moto</label>
+          <div class="col-md-4 offset-md-2">
+            <label for="vagasMotoVali" class="form-label">Tempo Pago</label>
             <input type="text" class="form-control" id="vagasMotoVali"  required>
           </div>
 
 
           <div class="col-md-4">
-            <label for="vagasCarroVali" class="form-label">Vagas Carro</label>
+            <label for="vagasCarroVali" class="form-label">Tempo Desconto</label>
             <input type="text" class="form-control" id="vagasCarroVali"  required>
-          </div>
-
-          <div class="col-md-4 ">
-            <label for="vagasVaVali" class="form-label">Vagas Vã</label>
-            <input type="text" class="form-control" id="vagasVaVali"  required>
-          </div>
-
-          <div class="col-md-4 offset-md-4">
-            <label for="descontoGerarVali" class="form-label">Gerar Desconto</label>
-            <select class="form-select" id="descontoGerarVali" required>
-              <option selected disabled value="">Selecione...</option>
-              <option value="true">True</option>
-              <option value="false">False</option>
-            </select>
           </div>
 
           <div class="col-12">
@@ -78,14 +68,11 @@
   <thead>
     <tr>
       <th scope="col" class="p-2">ID</th>
-      <th scope="col" class="p-2">inicioExpediente</th>
-      <th scope="col" class="p-1">fimExpediente</th>
-      <th scope="col" class="p-1">tempoDesconto</th>
-      <th scope="col" class="p-1">gerarDesconto</th>
-      <th scope="col" class="p-1">necessarioDesconto</th>
-      <th scope="col" class="p-1">vagasMoto</th>
-      <th scope="col" class="p-1">vagasMoto</th>
-      <th scope="col" class="p-1">vagasMoto</th>
+      <th scope="col" class="p-2">Nome</th>
+      <th scope="col" class="p-1">Cpf</th>
+      <th scope="col" class="p-1">Telefone</th>
+      <th scope="col" class="p-1">Tempo Pago</th>
+      <th scope="col" class="p-1">Tempo Desconto</th>
       <th scope="col colspan-2" class="p-2">Estado</th>
 
     </tr>
@@ -93,14 +80,11 @@
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>10:30</td>
-        <td>18:30</td>
-        <td>05:00</td>
-        <td>true</td>
-        <td>02:00</td>
-        <td>20</td>
-        <td>15</td>
-        <td>8</td>
+        <td>Emilio Anastacio de paula correa</td>
+        <td>123.123.123-12</td>
+        <td>45991112399</td>
+        <td>25:00:00</td>
+        <td>02:00:00</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
             <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
@@ -110,14 +94,11 @@
       </tr>
       <tr>
         <th scope="row">1</th>
-        <td>10:30</td>
-        <td>18:30</td>
-        <td>05:00</td>
-        <td>true</td>
-        <td>02:00</td>
-        <td>20</td>
-        <td>15</td>
-        <td>8</td>
+        <td>Emilio Anastacio de paula correa</td>
+        <td>123.123.123-12</td>
+        <td>45991112399</td>
+        <td>25:00:00</td>
+        <td>02:00:00</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
             <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
@@ -128,14 +109,11 @@
 
       <tr>
         <th scope="row">1</th>
-        <td>10:30</td>
-        <td>18:30</td>
-        <td>05:00</td>
-        <td>true</td>
-        <td>02:00</td>
-        <td>20</td>
-        <td>15</td>
-        <td>8</td>
+        <td>Emilio Anastacio de paula correa</td>
+        <td>123.123.123-12</td>
+        <td>45991112399</td>
+        <td>25:00:00</td>
+        <td>02:00:00</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
             <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
