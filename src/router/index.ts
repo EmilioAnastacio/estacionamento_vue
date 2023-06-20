@@ -33,9 +33,19 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoListaView.vue')
   },
   {
+    path: '/movimentacaoCadastrar',
+    name: 'movimentacao-Cadastrar',
+    component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoCadastrar.vue')
+  },
+  {
     path: '/veiculo',
     name: 'veiculo-lista-view',
     component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoListaView.vue')
+  },
+  {
+    path: '/veiculoCadastrar',
+    name: 'veiculo-cadastrar',
+    component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoCadastrar.vue')
   },
   {
     path: '/condutor',
@@ -43,9 +53,19 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "about" */ '../views/condutor/CondutorListaView.vue')
   },
   {
+    path: '/condutorCadastrar',
+    name: 'condutor-cadastrar',
+    component: () => import(/* webpackChunkName: "about" */ '../views/condutor/CondutorCadastrar.vue')
+  },
+  {
     path: '/configuracao',
     name: 'configuracao-lista-view',
     component: () => import(/* webpackChunkName: "about" */ '../views/configuracao/ConfiguracaoListaView.vue')
+  },
+  {
+    path: '/configuracaoCadastrar',
+    name: 'configuracao-cadastrar',
+    component: () => import(/* webpackChunkName: "about" */ '../views/configuracao/ConfiguracaoCadastrar.vue')
   },
 
 

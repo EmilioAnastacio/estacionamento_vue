@@ -5,7 +5,10 @@
   <div class="container col-md-8 corTabela"> 
 
     <div class="row align-items-center"> 
-      <h1 class="col-md-12 mt-2">Cadastrar Modelo</h1>
+      <router-link class="col col-md-1" to="/modelo">
+        <button type="button" class="btn btn-success">Voltar</button>
+      </router-link>
+      <h1 class="col-md-10 mt-2">Cadastrar Modelo</h1>
     </div>
 
     <div class="row align-items-center">

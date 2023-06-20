@@ -11,34 +11,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="adicionaModelo" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true" :class="{ 'd-block': abreAModal }">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Modelo</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="fechaModal()"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-              <label for="recipient-name" class=" row m-auto col-form-label">Modelo:</label>
-              <input type="text" class="form-control" placeholder="Nome do modelo" id="recipient-name">
-          </div>
-          <div class="mb-3">
-              <label for="recipient-name" class=" row m-auto col-form-label">Marca:</label>
-              <input type="text" class="form-control" placeholder="Nome da marca" id="recipient-name">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="fechaModal()">Fechar</button>
-        <button type="button" class="btn btn-success">Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <div class="container">
   <table class="table">
   <thead>
