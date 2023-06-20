@@ -8,8 +8,6 @@
       <router-link class="col col-md-1" to="/marcaCadastrar">
         <button type="button" class="btn btn-success">Cadastrar</button>
       </router-link>  
-    <!-- <button type="button" class="btn btn-primary col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Editar Marca</button>
-    <button type="button" class="btn btn-danger col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Deletar Marca</button> -->
   </div>
 </div>
 
@@ -19,14 +17,18 @@
     <tr>
 
       <th scope="col" class="p-2">ID</th>
+      <th scope="col" class="p-2">Estado</th>
       <th scope="col" class="p-2">Nome da Marca</th>
-      <th scope="col colspan-2" class="p-2">Estado</th>
+      <th scope="col colspan-2" class="p-2">Opção</th>
 
     </tr>
   </thead>
     <tbody class="table-group-divider">
       <tr>
         <th scope="row">1</th>
+        <th>
+            <span class="text-align-center col">INATIVO</span>    
+        </th>
         <td>Fiat</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
@@ -37,6 +39,9 @@
       </tr>
       <tr>
         <th scope="row">1</th>
+        <th>
+            <span class="text-align-center col">INATIVO</span>    
+        </th>
         <td>Fiat</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
@@ -48,6 +53,9 @@
 
       <tr>
         <th scope="row">2</th>
+        <th>
+            <span class="text-align-center col">INATIVO</span>    
+        </th>
         <td>Chevrolet</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
@@ -59,6 +67,9 @@
 
       <tr>
         <th scope="row">3</th>
+        <th>
+            <span class="text-align-center col">INATIVO</span>    
+        </th>
         <td>PSG</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
@@ -75,6 +86,14 @@
 
 
 <style scoped>
+
+.divInativo{
+  background-color: red;
+}
+
+.divInativo >span{
+  color: white;
+}
 
 </style>
 

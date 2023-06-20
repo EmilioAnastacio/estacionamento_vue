@@ -3,9 +3,15 @@
   <NavBar></NavBar>
 
 <div class="container col-md-8 corTabela"> 
+
   <div class="row align-items-center"> 
-    <h1 id="" class="col-md-12 mt-2">Cadastrar Marca</h1>
-  </div>
+      <router-link class="col col-md-1" to="/marca">
+        <button type="button" class="btn btn-success">Voltar</button>
+      </router-link>
+      <h1 class="col-md-10 mt-2">Cadastrar Marca</h1>
+    </div>
+
+
   <div class="nome col">
     <label for="recipient-name" class=" row m-auto col-form-label">Marca:</label>
     <input type="text" class="form-control" placeholder="Nome da marca" id="recipient-name">
