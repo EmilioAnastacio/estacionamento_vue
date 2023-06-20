@@ -17,7 +17,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #ececec;
   color: #2c3e50;
+  width: 100vw;
+  height: 100vh;
 }
 
 nav {

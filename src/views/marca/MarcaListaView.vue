@@ -2,43 +2,19 @@
 
   <NavBar></NavBar>
 
-
 <div class="col col-md-9 align-items-start">
   <div class="row align-items-center">
     <h2 class="col col-md-3 align-items-center">Lista de Marcas</h2>
-    <button type="button" class="btn btn-success col col-md-1" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Cadastrar</button>
-    <!-- <button type="button" class="btn btn-primary col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar Marca</button>
-    <button type="button" class="btn btn-danger col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar Marca</button> -->
+      <router-link class="col col-md-1" to="/marcaCadastrar">
+        <button type="button" class="btn btn-success">Cadastrar</button>
+      </router-link>  
+    <!-- <button type="button" class="btn btn-primary col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Editar Marca</button>
+    <button type="button" class="btn btn-danger col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Deletar Marca</button> -->
   </div>
 </div>
-
-<div class="modal fade" id="adicionaMarca" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true" :class="{ 'd-block': abreAModal }">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Marca</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="fechaModal()"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-              <label for="recipient-name" class=" row m-auto col-form-label">Marca:</label>
-              <input type="text" class="form-control" placeholder="Nome da marca" id="recipient-name">
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="fechaModal()">Fechar</button>
-        <button type="button" class="btn btn-success">Adicionar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 <div class="container">
   <table class="table">
-
   <thead>
     <tr>
 
@@ -52,14 +28,20 @@
       <tr>
         <th scope="row">1</th>
         <td>Fiat</td>
+        <td>
+          <div class="d-flex gap-2 justify-content-center">
+            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal">Editar</button>
+            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal">Deletar</button>
+          </div>
+        </td>
       </tr>
       <tr>
         <th scope="row">1</th>
         <td>Fiat</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
+            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal">Editar</button>
+            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Deletar</button>
           </div>
         </td>
       </tr>
@@ -69,8 +51,8 @@
         <td>Chevrolet</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
+            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Editar</button>
+            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Deletar</button>
           </div>
         </td>
       </tr>
@@ -80,8 +62,8 @@
         <td>PSG</td>
         <td>
           <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
+            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Editar</button>
+            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" >Deletar</button>
           </div>
         </td>
       </tr>
@@ -120,22 +102,6 @@ export default defineComponent({
   },
 
   methods:{
-
-    abreModal(){
-      this.abreAModal = true;
-    },
-    fechaModal(){
-      this.abreAModal = false;
-    },
-    adicionarMarca(){
-
-    },
-    editarMarca(){
-
-    },
-    deletarMarca(){
-
-    }
   }
 
 });

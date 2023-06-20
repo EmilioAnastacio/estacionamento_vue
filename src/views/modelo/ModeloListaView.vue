@@ -5,9 +5,9 @@
 <div class="col col-md-9 align-items-start">
   <div class="row align-items-center">
     <h2 class="col col-md-3 align-items-center">Lista de Modelos</h2>
-    <button type="button" class="btn btn-success col col-md-1" data-bs-toggle="modal" data-bs-target="#adicionaModelo" id="open_modal" @click="abreModal()">Cadastrar</button>
-    <!-- <button type="button" class="btn btn-primary col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar Marca</button>
-    <button type="button" class="btn btn-danger col-md-2 empurra_botao" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar Marca</button> -->
+    <router-link class="col col-md-1" to="/modeloCadastrar">
+        <button type="button" class="btn btn-success">Cadastrar</button>
+    </router-link> 
   </div>
 </div>
 
