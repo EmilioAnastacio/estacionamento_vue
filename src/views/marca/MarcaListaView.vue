@@ -2,16 +2,42 @@
 
   <NavBar></NavBar>
 
-<div class="col col-md-9 align-items-start">
-  <div class="row align-items-center">
-    <h2 class="col col-md-3 align-items-center">Lista de Marcas</h2>
-      <router-link class="col col-md-1" to="/marcaCadastrar">
-        <button type="button" class="btn btn-success">Cadastrar</button>
-      </router-link>  
-  </div>
-</div>
 
 <div class="container">
+
+  <div class="row text-start">
+      <h2 class="col-md-10">Lista de Marcas</h2>
+      <router-link class="col-md-2 " to="/marcaCadastrar">
+          <button type="button" class="btn btn-success offset-md-5">Cadastrar</button>
+      </router-link>  
+  </div>
+
+<!-- <table>
+  <thead>
+    <tr>
+      <th>
+
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr v-for="item in marcasList" :key="item.id">
+        <th class="col-md-1" >{{ item.id }}</th>
+        <th class="col-md-2">
+          <span v-if="item.ativo" class="badge text-bg-success">Ativo</span>
+          <span></span>
+        </th>
+        <th class="text-start">{{ item.nome }}</th>
+        <th class="">
+          <div class="btn-group" role="group">
+            <RouterLink :to="{name: 'marca-formulario-editar-view', query:{id: item.id, form: 'editar'}}"></RouterLink>
+          </div>
+        </th>
+      </tr>
+  </tbody>
+</table> -->
+
+
   <table class="table">
   <thead>
     <tr>
@@ -107,20 +133,34 @@ import adicionaMarca from '@/components/adicionaMarca.vue';
 //import { Marca } from '@/model/marca';
 
 import { onMounted, reactive, toRefs } from 'vue';
+import { Marca } from '@/model/marca';
+import { MarcaClient } from '@/client/marca.client';
+// const marcaClient 
 
 export default defineComponent({
   name: 'MarcaListaView',
   data() {
     return {
-      abreAModal: false,
+      marcasList: new Array<Marca>()
     };
+  },
+  mounted(){
+    //this.findAll();
   },
   components: {
     NavBar,
     adicionaMarca,
   },
-
   methods:{
+
+    // findAll(){
+    //   MarcaClient.listaAll().then(sucess =>{
+    //         this.marcasList =sucess
+    //     })
+    //     .catch(error =>{
+    //       console.log(error)
+    //     })
+    // }
   }
 
 });

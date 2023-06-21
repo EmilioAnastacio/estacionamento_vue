@@ -5,10 +5,7 @@
   <div class="container col-md-8 corTabela"> 
 
     <div class="row align-items-center"> 
-      <router-link class="col col-md-1" to="/veiculo">
-        <button type="button" class="btn btn-success">Voltar</button>
-      </router-link>
-      <h1 class="col-md-10 mt-2">Cadastrar Veiculo</h1>
+      <h1 class="col mt-2">Cadastrar Veiculo</h1>
     </div>
 
     <div class="row align-items-center">
@@ -45,9 +42,13 @@
     </div>
 
 
-    <div class="col">
-      <button type="submit" class="btn btn-success mt-2 mb-2"> Cadastrar</button>
-    </div>
+    <div class="col d-flex align-items-center justify-content-center">
+    <router-link class="col col-md-1" to="/veiculo">
+        <button type="button" class="btn btn-success">Voltar</button>
+    </router-link>
+    <button type="submit" class="btn btn-success mt-2 mb-2"> Cadastrar</button>
+    <!-- <button type="submit" class="btn btn-success mt-2 mb-2" @click="onClickCadastrar()"> Cadastrar</button> -->
+  </div>
   </div>
   
   </template>

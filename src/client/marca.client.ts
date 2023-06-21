@@ -12,8 +12,6 @@ export class MarcaClient{
         })
     }
 
-
-
     public async findById(id: number) : Promise<Marca>{
         try{
             return(await this.axiosMarca.get<Marca>(`/$(id)`)).data
@@ -22,7 +20,7 @@ export class MarcaClient{
         }
     }
 
-    public async listarAll() : Promise<Marca[]>{
+    public async listaAll() : Promise<Marca[]>{
         try{
             return(await this.axiosMarca.get<Marca[]>(`/listar`)).data
         }catch(error:any){
@@ -32,13 +30,13 @@ export class MarcaClient{
 
     public async cadastrar(marca: Marca) : Promise<void>{
         try{
-            return(await this.axiosMarca.post(`/`, marca)).data
+            return(await this.axiosMarca.post(``, marca)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(marca: Marca) : Promise<void>{
+    public async editar(id:number, marca: Marca) : Promise<void>{
         try{
             return(await this.axiosMarca.put(`/`, marca)).data
         }catch(error:any){
@@ -46,11 +44,13 @@ export class MarcaClient{
         }
     }
 
-    public async deletar(marca: Marca) : Promise<string>{
+    public async deletar(id:number) : Promise<string>{
         try{
-            return(await this.axiosMarca.delete(`/$(id)`)).data
+            return(await this.axiosMarca.delete(`/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }    
 }
+
+export default new MarcaClient;
