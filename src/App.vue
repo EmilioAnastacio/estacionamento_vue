@@ -10,6 +10,7 @@
 <style lang="scss">
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 // fim da istilização boostrap!
 
 #app {
@@ -17,7 +18,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #ececec;
+  background-color: #f0f0f0;
   color: #2c3e50;
   width: 100vw;
   height: 100vh;
@@ -31,7 +32,7 @@ nav {
     color: #2c3e50;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #4ec48f;
     }
   }
 }

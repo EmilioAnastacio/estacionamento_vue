@@ -1,9 +1,10 @@
 <template>
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
-
+  <nav class="navbar navbar-expand-lg bg-body-navCor mb-3 navCor">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Estacionamento</a>
+    <img src="../assets/sas-ma-product-f-18-avionics-teaser-2500x1700-removebg-preview.png" alt="" style="height: 40px; width: auto;">
+    <!-- <i class="bi-airplane-engines-fill" style="font-size: 25px; color: rgb(187, 187, 187); margin-right: 1%;"></i> -->
+    <a class="navbar-brand" href="/">FlyCar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,6 +38,10 @@
 </template>
 
 <style lang="scss">
+
+.navCor{
+  background-color: rgb(224, 224, 224);
+}
 
 .bg-azul{
   background-color: rgb(250, 100, 255);

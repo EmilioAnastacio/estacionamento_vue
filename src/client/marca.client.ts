@@ -1,7 +1,7 @@
 import { Marca } from "@/model/marca";
 import axios, {AxiosInstance} from "axios";
 
-export class MarcaClient{
+class MarcaClient{
 
     private axiosMarca : AxiosInstance;
 
@@ -14,7 +14,7 @@ export class MarcaClient{
 
     public async findById(id: number) : Promise<Marca>{
         try{
-            return(await this.axiosMarca.get<Marca>(`/$(id)`)).data
+            return(await this.axiosMarca.get<Marca>(`/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
@@ -22,31 +22,31 @@ export class MarcaClient{
 
     public async listaAll() : Promise<Marca[]>{
         try{
-            return(await this.axiosMarca.get<Marca[]>(`/listar`)).data
+            return(await this.axiosMarca.get<Marca[]>(`/lista`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async cadastrar(marca: Marca) : Promise<void>{
+    public async cadastrar(marca: Marca) : Promise<string>{
         try{
-            return(await this.axiosMarca.post(``, marca)).data
+            return(await this.axiosMarca.post<string>(``, marca)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(id:number, marca: Marca) : Promise<void>{
+    public async editar(id: number, marca: Marca): Promise<string>{
         try{
-            return(await this.axiosMarca.put(`/`, marca)).data
+            return(await this.axiosMarca.put<string>(`/${id}`, marca)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async deletar(id:number) : Promise<string>{
+    public async excluir(id:number) : Promise<string>{
         try{
-            return(await this.axiosMarca.delete(`/${id}`)).data
+            return(await this.axiosMarca.delete<string>(`/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
