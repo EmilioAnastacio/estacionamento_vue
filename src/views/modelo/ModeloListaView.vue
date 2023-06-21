@@ -2,20 +2,20 @@
 
   <NavBar></NavBar>
 
-<div class="col col-md-9 align-items-start">
-  <div class="row align-items-center">
-    <h2 class="col col-md-3 align-items-center">Lista de Modelos</h2>
-    <router-link class="col col-md-1" to="/modeloCadastrar">
-        <button type="button" class="btn btn-success">Cadastrar</button>
-    </router-link> 
-  </div>
-</div>
-
 <div class="container">
+
+  <div class="row text-start">
+      <h2 class="col-md-10">Lista de Modelo</h2>
+      <router-link class="col-md-2 " to="/modeloCadastrar">
+          <button type="button" class="btn btn-success offset-md-5">Cadastrar</button>
+      </router-link>  
+  </div>
+
   <table class="table">
   <thead>
     <tr>
       <th scope="col" class="p-2">ID</th>
+      <th scope="col" class="p-2">ESTADO</th>
       <th scope="col" class="p-2">Nome do Modelo</th>
       <th scope="col" class="p-2">Marca</th>
       <th scope="col colspan-2" class="p-2">Estado</th>
@@ -25,6 +25,7 @@
     <tbody>
       <tr>
         <th scope="row">1</th>
+        <td>INATIVO</td>
         <td>Palio</td>
         <td>Fiat</td>
         <td>
@@ -38,6 +39,7 @@
       </tr>
       <tr>
         <th scope="row">2</th>
+        <td>INATIVO</td>
         <td>Chevrolet</td>
         <td>Andador</td>
         <td>
@@ -50,6 +52,7 @@
 
       <tr>
         <th scope="row">3</th>
+        <td>INATIVO</td>
         <td>PSG</td>
         <td>neymar</td>
         <td>

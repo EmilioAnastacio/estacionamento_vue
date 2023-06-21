@@ -15,7 +15,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/marcaCadastrar',
     name: 'marca-cadastrar',
-    component: () => import(/* webpackChunkName: "about" */ '../views/marca/MarcaCadastrar.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/marca/MarcaCadastrar.vue'),
+    children: [
+    {
+      path: '/marcaCadastrar',
+      name: 'marca-cadastrar-editar',
+      component: () => import(/* webpackChunkName: "about" */ '../views/marca/MarcaCadastrar.vue'),
+    },
+    {
+      path: '/marcaCadastrar',
+      name: 'marca-cadastrar-excluir',
+      component: () => import(/* webpackChunkName: "about" */ '../views/marca/MarcaCadastrar.vue'),
+    },
+  ]
   },
   {
     path: '/modelo',

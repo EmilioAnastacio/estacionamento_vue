@@ -2,16 +2,15 @@
 
   <NavBar></NavBar>
 
-<div class="col col-md-9 align-items-start">
-  <div class="row align-items-center">
-    <h2 class="col col-md-3 align-items-center">Lista de Movimentação</h2>
-    <router-link class="col col-md-1" to="/movimentacaoCadastrar">
-        <button type="button" class="btn btn-success">Cadastrar</button>
-    </router-link> 
-  </div>
-</div>
-
 <div class="container">
+
+  <div class="row text-start">
+      <h2 class="col-md-10">Lista de Movimentação</h2>
+      <router-link class="col-md-2 " to="/movimentacaoCadastrar">
+          <button type="button" class="btn btn-success offset-md-5">Cadastrar</button>
+      </router-link>  
+  </div>
+
   <table class="table">
   <thead>
     <tr>

@@ -2,21 +2,20 @@
 
   <NavBar></NavBar>
 
-<div class="col col-md-9 align-items-start">
-  <div class="row align-items-center">
-    <h2 class="col col-md-3 align-items-center">Lista de Configuração</h2>
-    <router-link class="col col-md-1" to="/configuracaoCadastrar">
-        <button type="button" class="btn btn-success">Cadastrar</button>
-      </router-link> 
-  </div>
-</div>
-
-
 <div class="container">
+
+  <div class="row text-start">
+      <h2 class="col-md-10">Lista de Configuração</h2>
+      <router-link class="col-md-2 " to="/configuracaoCadastrar">
+          <button type="button" class="btn btn-success offset-md-5">Cadastrar</button>
+      </router-link>  
+  </div>
+
   <table class="table">
   <thead>
     <tr>
       <th scope="col" class="p-2">ID</th>
+      <th scope="col" class="p-2">Estado</th>
       <th scope="col" class="p-2">inicioExpediente</th>
       <th scope="col" class="p-1">fimExpediente</th>
       <th scope="col" class="p-1">tempoDesconto</th>
@@ -32,6 +31,7 @@
     <tbody>
       <tr>
         <th scope="row">1</th>
+        <td>INATIVO</td>
         <td>10:30</td>
         <td>18:30</td>
         <td>05:00</td>
@@ -49,6 +49,7 @@
       </tr>
       <tr>
         <th scope="row">1</th>
+        <td>INATIVO</td>
         <td>10:30</td>
         <td>18:30</td>
         <td>05:00</td>
@@ -67,6 +68,7 @@
 
       <tr>
         <th scope="row">1</th>
+        <td>INATIVO</td>
         <td>10:30</td>
         <td>18:30</td>
         <td>05:00</td>

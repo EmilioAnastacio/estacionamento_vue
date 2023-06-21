@@ -2,20 +2,20 @@
 
   <NavBar></NavBar>
 
-<div class="col col-md-9 align-items-start">
-  <div class="row align-items-center">
-    <h2 class="col col-md-3 align-items-center">Lista de Condutores</h2>
-    <router-link class="col col-md-1" to="/condutorCadastrar">
-        <button type="button" class="btn btn-success">Cadastrar</button>
+<div class="container">
+
+  <div class="row text-start">
+      <h2 class="col-md-10">Lista de Condutor</h2>
+      <router-link class="col-md-2 " to="/condutorCadastrar">
+          <button type="button" class="btn btn-success offset-md-5">Cadastrar</button>
       </router-link>  
   </div>
-</div>
 
-<div class="container">
   <table class="table">
   <thead>
     <tr>
       <th scope="col" class="p-2">ID</th>
+      <th scope="col" class="p-2">Estado</th>
       <th scope="col" class="p-2">Nome</th>
       <th scope="col" class="p-1">Cpf</th>
       <th scope="col" class="p-1">Telefone</th>
@@ -28,6 +28,7 @@
     <tbody>
       <tr>
         <th scope="row">1</th>
+        <th>Inativo</th>
         <td>Emilio Anastacio de paula correa</td>
         <td>123.123.123-12</td>
         <td>45991112399</td>
@@ -42,6 +43,7 @@
       </tr>
       <tr>
         <th scope="row">1</th>
+        <th>Inativo</th>
         <td>Emilio Anastacio de paula correa</td>
         <td>123.123.123-12</td>
         <td>45991112399</td>
@@ -57,6 +59,7 @@
 
       <tr>
         <th scope="row">1</th>
+        <th>Inativo</th>
         <td>Emilio Anastacio de paula correa</td>
         <td>123.123.123-12</td>
         <td>45991112399</td>
