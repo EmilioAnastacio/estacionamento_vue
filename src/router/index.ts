@@ -29,6 +29,7 @@ const routes: Array<RouteRecordRaw> = [
     },
   ]
   },
+
   {
     path: '/modelo',
     name: 'modelo-lista-view',
@@ -37,7 +38,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/modeloCadastrar',
     name: 'modelo-cadastrar',
-    component: () => import(/* webpackChunkName: "about" */ '../views/modelo/ModeloCadastrar.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/modelo/ModeloCadastrar.vue'),
+    children: [
+      {
+        path: '/modeloCadastrar',
+        name: 'modelo-cadastrar-editar',
+        component: () => import(/* webpackChunkName: "about" */ '../views/modelo/ModeloCadastrar.vue'),
+      },
+      {
+        path: '/modeloCadastrar',
+        name: 'modelo-cadastrar-excluir',
+        component: () => import(/* webpackChunkName: "about" */ '../views/modelo/ModeloCadastrar.vue'),
+      },
+    ]
   },
   {
     path: '/movimentacao',

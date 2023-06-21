@@ -8,27 +8,26 @@
       <h1 class="col mt-2">Cadastrar Modelo</h1>
     </div>
 
-    <div class="row align-items-center">
-
-    <div class="nome col col-md-6">
-      <label for="recipient-name" class=" row m-auto col-form-label">Modelo:</label>
-      <input type="text" class="form-control" placeholder="Nome da marca" id="recipient-name">
+    <div class="nome col">
+      <label for="recipient-name" class=" row m-auto col-form-label">Nome do Modelo:</label>
+      <input type="text" :disabled="this.form === 'excluir' ? '' : disabled" class="form-control" v-model="modelo.nome">
     </div>
-    <div class="nome col col-md-6">
-      <label for="recipient-name" class=" row m-auto col-form-label">Modelo:</label>
-      <input type="text" class="form-control" placeholder="Nome da marca" id="recipient-name">
+    <div class="nome col">
+      <label for="recipient-name" class=" row m-auto col-form-label">Nome da Marca:</label>
+      <input type="text" :disabled="this.form === 'excluir' ? '' : disabled" class="form-control" v-model="modelo.marca">
     </div>
-
-    </div>
-
 
     <div class="col d-flex align-items-center justify-content-center">
     <router-link class="col col-md-1" to="/modelo">
         <button type="button" class="btn btn-success">Voltar</button>
     </router-link>
-    <button type="submit" class="btn btn-success mt-2 mb-2"> Cadastrar</button>
-    <!-- <button type="submit" class="btn btn-success mt-2 mb-2" @click="onClickCadastrar()"> Cadastrar</button> -->
+
+    <button type="button" v-if="this.form === undefined" class="btn btn-success mt-2 mb-2" @click="onClickCadastrar()"> Cadastrar</button>
+    <button type="button" v-if="this.form === 'editar'" class="btn btn-warning mt-2 mb-2" @click="onClickEditar()"> Editar</button>
+    <button type="button" v-if="this.form === 'excluir'" class="btn btn-danger mt-2 mb-2" @click="onClickExcluir()"> Excluir</button>
   </div>
+
+
   </div>
   
   </template>
@@ -48,23 +47,130 @@
   
   import { defineComponent } from 'vue';
   import NavBar from '@/components/NavBar.vue'; // @ is an alias to /src
-  import adicionaMarca from '@/components/adicionaMarca.vue';
-  //import { MarcaClient } from '@/client/marca.client';
-  //import { Marca } from '@/model/marca';
-  
-  import { onMounted, reactive, toRefs } from 'vue';
+  import { Modelo } from '@/model/modelo';
+  import ModeloClient from '@/client/modelo.client';
+
   
   export default defineComponent({
     name: 'ModeloCadastrar',
     data() {
       return {
-        abreAModal: false,
+        modelo: new Modelo(),
+        
+        mensagem: {
+        ativo: false as boolean,
+        titulo: "" as string,
+        mensagem: "" as string,
+        css: "" as string
+      }
       };
     },
     components: {
       NavBar,
-      adicionaMarca,
     },
+    computed: {
+    id(){
+      return this.$route.query.id
+    },
+    form(){
+      return this.$route.query.form
+    }
+  },
+  mounted() {
+    
+    if(this.id !== undefined){
+     this.findById(Number(this.id));
+    }   
+ },
+ methods:{
+    //FIND BY ID
+    //
+    findById(id: number){
+        ModeloClient.findById(id).then(sucess =>{
+        this.modelo = sucess
+          
+    })
+    .catch(error =>{
+        console.log(error)
+
+        this.mensagem.ativo = true;
+        this.mensagem.mensagem = error;
+        this.mensagem.titulo = "Erro, nao foi possivel buscar pelo ID ";
+        this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+    })
+    },
+
+    //CADASTRAR
+    //
+    onClickCadastrar(){
+      ModeloClient.cadastrar(this.modelo).then(sucess =>{
+            this.modelo = new Modelo();
+            console.log("TA VINDOO");
+            console.log(sucess);
+
+          this.mensagem.ativo = true;
+          this.mensagem.mensagem = sucess;
+          this.mensagem.titulo = "Modelo cadastrada com sucesso ";
+          this.mensagem.css = "alert alert-success alert-dismissible fade show";
+      
+        })
+        .catch(error =>{
+          console.log(error)
+
+          this.mensagem.ativo = true;
+          this.mensagem.mensagem = error;
+          this.mensagem.titulo = "Erro, não foi possivel Cadastrar a Modelo ";
+          this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+        })
+    },
+
+    onClickEditar(){
+      console.log("Antes do metodo");
+      ModeloClient.editar(this.modelo.id, this.modelo)
+        .then(sucess => {
+          console.log("Depois");
+          this.modelo = new Modelo()
+          console.log(sucess);
+
+          this.mensagem.ativo = true;
+          this.mensagem.mensagem = sucess;
+          this.mensagem.titulo = "Modelo Editada com sucesso!";
+          this.mensagem.css = "alert alert-success alert-dismissible fade show";
+         
+        })
+        .catch(error => {
+          console.log(error)
+          this.mensagem.ativo = true;
+          this.mensagem.mensagem = error;
+          this.mensagem.titulo = "Erro, não foi possivel editar a marca ";
+          this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+        });
+    },
+
+    //EXCLUIR
+    //
+    onClickExcluir(){
+      ModeloClient.excluir(this.modelo.id).then(sucess =>{
+            this.modelo = new Modelo();
+
+            this.mensagem.ativo = true;
+            this.mensagem.mensagem = sucess;
+            this.mensagem.titulo = "Marca Excluida com sucesso!";
+            this.mensagem.css = "alert alert-success alert-dismissible fade show";
+
+            //this.$router.push({name: 'marca-lista-view'})
+        })
+        .catch(error =>{
+          console.log(error)
+
+          this.mensagem.ativo = true;
+          this.mensagem.mensagem = error;
+          this.mensagem.titulo = "Erro, Não foi possivel excluir a marca";
+          this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+        })
+    },
+
+ }
   
   
   });

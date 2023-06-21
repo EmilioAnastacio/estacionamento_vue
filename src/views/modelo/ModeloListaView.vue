@@ -11,60 +11,46 @@
       </router-link>  
   </div>
 
+  <div class="border" style="border-radius: 20px;background-color: white;padding: 6px;">
   <table class="table">
   <thead>
-    <tr>
+    <tr >
       <th scope="col" class="p-2">ID</th>
-      <th scope="col" class="p-2">ESTADO</th>
-      <th scope="col" class="p-2">Nome do Modelo</th>
-      <th scope="col" class="p-2">Marca</th>
-      <th scope="col colspan-2" class="p-2">Estado</th>
-
+      <th scope="col" class="p-2">Estado</th>
+      <th scope="col" class="p-2 text-start">Nome do Modelo</th>
+      <th scope="col" class="p-2 text-start">Nome da Marca</th>
+      <th scope="col colspan-2" class="p-2">Opção</th>
     </tr>
   </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>INATIVO</td>
-        <td>Palio</td>
-        <td>Fiat</td>
-        <td>
-          <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
+
+    <tbody class="table-group-divider">
+
+      <tr v-for="item in modelosList" :key="item.id" class="col-md-12">
+        <th class="col-md-1">{{ item.id }}</th>
+        <th class="col-md-1">
+            <span v-if="item.ativo" class="badge bg-primary text-align-center col"> ATIVO</span> 
+            <span v-if="!item.ativo" class="badge bg-danger text-align-center col"> INATIVO</span>
+        </th>
+        <th class="col-md-6 text-start">{{ item.nome }}</th>
+        <th class="col-md-1"> {{ item.marca.nome }}</th>
+        <!-- <th class="col-md-6 text-start">{{ item.marca.nome }}</th> -->
+        <th class="col-md-2">
+          <div class="btn-group" role="group">
+            <RouterLink type="button" class="btn text-align-center col-md-2" 
+              :to="{name: 'marca-cadastrar-editar', query: {id: item.id, form: 'editar'}}">
+              <span class="badge bg-warning btn text-align-center col">EDITAR</span>
+            </RouterLink>
+            <RouterLink type="button" class="btn text-align-center col-md-2" 
+              :to="{name: 'marca-cadastrar-excluir', query: {id: item.id, form: 'excluir'}}">
+              <span class="badge bg-danger btn text-align-center col">EXCLUIR</span>
+            </RouterLink>
           </div>
-        </td>
-
-
+        </th>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>INATIVO</td>
-        <td>Chevrolet</td>
-        <td>Andador</td>
-        <td>
-          <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">3</th>
-        <td>INATIVO</td>
-        <td>PSG</td>
-        <td>neymar</td>
-        <td>
-          <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger col-sm-2" data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
-          </div>
-        </td>
-      </tr>
-
     </tbody>
   </table>
+</div>
+
 </div>
 </template>
 
@@ -76,17 +62,18 @@
 
 import { defineComponent } from 'vue';
 import NavBar from '@/components/NavBar.vue'; // @ is an alias to /src
-//import { MarcaClient } from '@/client/marca.client';
-//import { Marca } from '@/model/marca';
-
-import { onMounted, reactive, toRefs } from 'vue';
+import { Modelo } from '@/model/modelo';
+import  ModeloClient  from '@/client/modelo.client';
 
 export default defineComponent({
   name: 'ModeloListaView',
   data() {
     return {
-      abreAModal: false,
+      modelosList: new Array<Modelo>(),
     };
+  },
+  mounted(){
+    this.findAll();
   },
   components: {
     NavBar,
@@ -94,20 +81,14 @@ export default defineComponent({
 
   methods:{
 
-    abreModal(){
-      this.abreAModal = true;
-    },
-    fechaModal(){
-      this.abreAModal = false;
-    },
-    adicionarMarca(){
-
-    },
-    editarMarca(){
-
-    },
-    deletarMarca(){
-
+    findAll(){
+      ModeloClient.listaAll().then(sucess =>{
+            console.log("OI")
+            this.modelosList =sucess
+        })
+        .catch(error =>{
+          console.log(error)
+        })
     }
   }
 
