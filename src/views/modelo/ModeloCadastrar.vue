@@ -14,6 +14,7 @@
     </div>
     <div class="nome col">
       <label for="recipient-name" class=" row m-auto col-form-label">Nome da Marca:</label>
+      <select type="text" v-model="modelo.marca"><option v-for="item in marca" :value="item">{{ item.nome }} </option></select>
       <input type="text" :disabled="this.form === 'excluir' ? '' : disabled" class="form-control" v-model="modelo.marca">
     </div>
 
@@ -49,6 +50,8 @@
   import NavBar from '@/components/NavBar.vue'; // @ is an alias to /src
   import { Modelo } from '@/model/modelo';
   import ModeloClient from '@/client/modelo.client';
+  import MarcaClient from '@/client/marca.client';
+  import { Marca } from '@/model/marca';
 
   
   export default defineComponent({
@@ -56,6 +59,7 @@
     data() {
       return {
         modelo: new Modelo(),
+        marca: new Array<Marca>(),
         
         mensagem: {
         ativo: false as boolean,
@@ -80,7 +84,9 @@
     
     if(this.id !== undefined){
      this.findById(Number(this.id));
-    }   
+    }
+
+    this.findAllMarca();   
  },
  methods:{
     //FIND BY ID
@@ -98,6 +104,18 @@
         this.mensagem.titulo = "Erro, nao foi possivel buscar pelo ID ";
         this.mensagem.css = "alert alert-danger alert-dismissible fade show";
     })
+    },
+
+    findAllMarca(){
+      MarcaClient.listaAll().then(sucess =>{
+        this.marca = sucess;
+        console.log(sucess);
+      })
+      .catch(error =>{
+          console.log(error)
+
+        })
+
     },
 
     //CADASTRAR
