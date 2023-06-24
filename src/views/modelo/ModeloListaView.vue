@@ -37,11 +37,11 @@
         <th class="col-md-2">
           <div class="btn-group" role="group">
             <RouterLink type="button" class="btn text-align-center col-md-2" 
-              :to="{name: 'marca-cadastrar-editar', query: {id: item.id, form: 'editar'}}">
+              :to="{name: 'modelo-cadastrar-editar', query: {id: item.id, form: 'editar'}}">
               <span class="badge bg-warning btn text-align-center col">EDITAR</span>
             </RouterLink>
             <RouterLink type="button" class="btn text-align-center col-md-2" 
-              :to="{name: 'marca-cadastrar-excluir', query: {id: item.id, form: 'excluir'}}">
+              :to="{name: 'modelo-cadastrar-excluir', query: {id: item.id, form: 'excluir'}}">
               <span class="badge bg-danger btn text-align-center col">EXCLUIR</span>
             </RouterLink>
           </div>

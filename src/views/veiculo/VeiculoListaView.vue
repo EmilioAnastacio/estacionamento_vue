@@ -10,75 +10,52 @@
           <button type="button" class="btn btn-success offset-md-5">Cadastrar</button>
       </router-link>  
   </div>
-
+<div class="border" style="border-radius: 20px;background-color: white;padding: 6px;">
   <table class="table">
-  <thead>
-    <tr>
-      <th scope="col" class="p-2">ID</th>
-      <th scope="col" class="p-2">ESTADO</th>
-      <th scope="col" class="p-2">Placa</th>
-      <th scope="col" class="p-1">Modelo</th>
-      <th scope="col" class="p-1">Marca</th>
-      <th scope="col" class="p-1">Tipo</th>
-      <th scope="col" class="p-1">Cor</th>
-      <th scope="col" class="p-1">Ano</th>
-      <th scope="col colspan-2" class="p-2">Estado</th>
-
-    </tr>
-  </thead>
-    <tbody>
+    <thead>
       <tr>
-        <th scope="row">1</th>
-        <td>INATIVO</td>
-        <td>AVH-7824</td>
-        <td>Palio</td>
-        <td>Fiat</td>
-        <td>Carro</td>
-        <td>Branco</td>
-        <td>2010</td>
-        <td>
-          <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>INATIVO</td>
-        <td>AVH-7824</td>
-        <td>Palio</td>
-        <td>Fiat</td>
-        <td>Carro</td>
-        <td>Branco</td>
-        <td>2010</td>
-        <td>
-          <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
-          </div>
-        </td>
-      </tr>
+        <th scope="col" class="p-2">ID</th>
+        <th scope="col" class="p-2">ESTADO</th>
+        <th scope="col" class="p-2">Placa</th>
+        <th scope="col" class="p-1">Modelo</th>
+        <th scope="col" class="p-1">Marca</th>
+        <th scope="col" class="p-1">Tipo</th>
+        <th scope="col" class="p-1">Cor</th>
+        <th scope="col" class="p-1">Ano</th>
+        <th scope="col colspan-2" class="p-2">Estado</th>
 
-      <tr>
-        <th scope="row">1</th>
-        <td>INATIVO</td>
-        <td>AVH-7824</td>
-        <td>Palio</td>
-        <td>Fiat</td>
-        <td>Carro</td>
-        <td>Branco</td>
-        <td>2010</td>
-        <td>
-          <div class="d-flex gap-2 justify-content-center">
-            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Editar</button>
-            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#adicionaMarca" id="open_modal" @click="abreModal()">Deletar</button>
-          </div>
-        </td>
       </tr>
+    </thead>
+    <tbody class="table-group-divider">
 
+      <tr v-for="item in veiculosList" :key="item.id" class="col-md-12">
+        <th class="col-md-1">{{ item.id }}</th>
+        <th class="col-md-1">
+            <span v-if="item.ativo" class="badge bg-primary text-align-center col"> ATIVO</span> 
+            <span v-if="!item.ativo" class="badge bg-danger text-align-center col"> INATIVO</span>
+        </th>
+        <th class="col-md-3 ">{{ item.placa }}</th>
+        <th class="col-md-1"> {{ item.modelo.nome }}</th>
+        <th class="col-md-1"> {{ item.modelo.marca.nome }}</th>
+        <th class="col-md-1"> {{ item.tipo }}</th>
+        <th class="col-md-1"> {{ item.ano }}</th>
+        <th class="col-md-1"> {{ item.ano }}</th>
+        <th class="col-md-2">
+          <div class="btn-group" role="group">
+            <RouterLink type="button" class="btn text-align-center col-md-2" 
+              :to="{name: 'veiculo-cadastrar-editar', query: {id: item.id, form: 'editar'}}">
+              <span class="badge bg-warning btn text-align-center col">EDITAR</span>
+            </RouterLink>
+            <RouterLink type="button" class="btn text-align-center col-md-2" 
+              :to="{name: 'veiculo-cadastrar-excluir', query: {id: item.id, form: 'excluir'}}">
+              <span class="badge bg-danger btn text-align-center col">EXCLUIR</span>
+            </RouterLink>
+          </div>
+        </th>
+      </tr>
     </tbody>
   </table>
+</div>
 </div>
 </template>
 
@@ -90,38 +67,33 @@
 
 import { defineComponent } from 'vue';
 import NavBar from '@/components/NavBar.vue'; // @ is an alias to /src
-//import { MarcaClient } from '@/client/marca.client';
-//import { Marca } from '@/model/marca';
-
-import { onMounted, reactive, toRefs } from 'vue';
+import { Veiculo } from '@/model/veiculo';
+import VeiculoClient from '@/client/veiculo.client';
 
 export default defineComponent({
   name: 'VeiculoListaView',
   data() {
     return {
-      abreAModal: false,
+      veiculosList: new Array<Veiculo>(),
     };
   },
   components: {
     NavBar,
   },
+  mounted(){
+    this.findAll();
+  },
 
   methods:{
 
-    abreModal(){
-      this.abreAModal = true;
-    },
-    fechaModal(){
-      this.abreAModal = false;
-    },
-    adicionarMarca(){
-
-    },
-    editarMarca(){
-
-    },
-    deletarMarca(){
-
+    findAll(){
+      VeiculoClient.listaAll().then(sucess =>{
+            console.log("OI")
+            this.veiculosList =sucess
+        })
+        .catch(error =>{
+          console.log(error)
+        })
     }
   }
 

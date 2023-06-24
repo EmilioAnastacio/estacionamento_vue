@@ -52,6 +52,7 @@ const routes: Array<RouteRecordRaw> = [
       },
     ]
   },
+
   {
     path: '/movimentacao',
     name: 'movimentacao-lista-view',
@@ -60,18 +61,57 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/movimentacaoCadastrar',
     name: 'movimentacao-Cadastrar',
-    component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoCadastrar.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoCadastrar.vue'),
+    children: [
+      {
+        path: '/movimentacaoCadastrar',
+        name: 'movimentacao-cadastrar-editar',
+        component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoCadastrar.vue'),
+      },
+      {
+        path: '/movimentacaoCadastrar',
+        name: 'movimentacao-cadastrar-excluir',
+        component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoCadastrar.vue'),
+      },
+    ]
   },
+
   {
     path: '/veiculo',
     name: 'veiculo-lista-view',
-    component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoListaView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoListaView.vue'),
+    children: [
+      {
+        path: '/veiculoCadastrar',
+        name: 'veiculo-cadastrar-editar',
+        component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoCadastrar.vue'),
+      },
+      {
+        path: '/veiculoCadastrar',
+        name: 'veiculo-cadastrar-excluir',
+        component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoCadastrar.vue'),
+      },
+    ]
   },
+
   {
     path: '/veiculoCadastrar',
     name: 'veiculo-cadastrar',
-    component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoCadastrar.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoCadastrar.vue'),
+    children: [
+      {
+        path: '/veiculoCadastrar',
+        name: 'veiculo-cadastrar-editar',
+        component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoCadastrar.vue'),
+      },
+      {
+        path: '/veiculoCadastrar',
+        name: 'veiculo-cadastrar-excluir',
+        component: () => import(/* webpackChunkName: "about" */ '../views/veiculo/VeiculoCadastrar.vue'),
+      },
+    ]
   },
+
   {
     path: '/condutor',
     name: 'condutor-lista-view',
@@ -80,8 +120,21 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/condutorCadastrar',
     name: 'condutor-cadastrar',
-    component: () => import(/* webpackChunkName: "about" */ '../views/condutor/CondutorCadastrar.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/condutor/CondutorCadastrar.vue'),
+    children: [
+      {
+        path: '/condutorCadastrar',
+        name: 'condutor-cadastrar-editar',
+        component: () => import(/* webpackChunkName: "about" */ '../views/condutor/CondutorCadastrar.vue'),
+      },
+      {
+        path: '/condutorCadastrar',
+        name: 'condutor-cadastrar-excluir',
+        component: () => import(/* webpackChunkName: "about" */ '../views/condutor/CondutorCadastrar.vue'),
+      },
+    ]
   },
+  
   {
     path: '/configuracao',
     name: 'configuracao-lista-view',
@@ -90,7 +143,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/configuracaoCadastrar',
     name: 'configuracao-cadastrar',
-    component: () => import(/* webpackChunkName: "about" */ '../views/configuracao/ConfiguracaoCadastrar.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/configuracao/ConfiguracaoCadastrar.vue'),
+    children: [
+      {
+        path: '/configuracaoCadastrar',
+        name: 'configuracao-cadastrar-editar',
+        component: () => import(/* webpackChunkName: "about" */ '../views/configuracao/ConfiguracaoCadastrar.vue'),
+      },
+      {
+        path: '/configuracaoCadastrar',
+        name: 'configuracao-cadastrar-excluir',
+        component: () => import(/* webpackChunkName: "about" */ '../views/configuracao/ConfiguracaoCadastrar.vue'),
+      },
+    ]
   },
 
 

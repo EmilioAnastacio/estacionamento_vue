@@ -1,13 +1,13 @@
 import { Veiculo } from "@/model/veiculo";
 import axios, {AxiosInstance} from "axios";
 
-export class VeiculoClient{
+class VeiculoClient{
 
     private axiosVeiculo : AxiosInstance;
 
     constructor(){
         this.axiosVeiculo = axios.create({
-            baseURL:"http://localhost:8080/api/marca",
+            baseURL:"http://localhost:8080/api/veiculo",
             headers:{"Content-Type" : "application/JSON"}
         })
     }
@@ -20,35 +20,37 @@ export class VeiculoClient{
         }
     }
 
-    public async listarAll() : Promise<Veiculo[]>{
+    public async listaAll() : Promise<Veiculo[]>{
         try{
-            return(await this.axiosVeiculo.get<Veiculo[]>(`/listar`)).data
+            return(await this.axiosVeiculo.get<Veiculo[]>(`/lista`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async cadastrar(veiculo: Veiculo) : Promise<void>{
+    public async cadastrar(veiculo: Veiculo) : Promise<string>{
         try{
-            return(await this.axiosVeiculo.post(`/`, veiculo)).data
+            return(await this.axiosVeiculo.post<string>(``, veiculo)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(veiculo: Veiculo) : Promise<void>{
+    public async editar(id: number, veiculo: Veiculo) : Promise<string>{
         try{
-            return(await this.axiosVeiculo.put(`/`, veiculo)).data
+            return(await this.axiosVeiculo.put<string>(`/${id}`, veiculo)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async deletar(veiculo: Veiculo) : Promise<string>{
+    public async excluir(id: number) : Promise<string>{
         try{
-            return(await this.axiosVeiculo.delete(`/$(id)`)).data
+            return(await this.axiosVeiculo.delete<string>(`/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }    
 }
+
+export default new VeiculoClient;

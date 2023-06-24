@@ -1,7 +1,7 @@
 import { Configuracao } from "@/model/configuracao";
 import axios, {AxiosInstance} from "axios";
 
-export class ConfiguracaoClient{
+class ConfiguracaoClient{
 
     private axiosConfiguracao : AxiosInstance;
 
@@ -14,41 +14,43 @@ export class ConfiguracaoClient{
 
     public async findById(id: number) : Promise<Configuracao>{
         try{
-            return(await this.axiosConfiguracao.get<Configuracao>(`/$(id)`)).data
+            return(await this.axiosConfiguracao.get<Configuracao>(`/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async listarAll() : Promise<Configuracao[]>{
+    public async listaAll() : Promise<Configuracao[]>{
         try{
-            return(await this.axiosConfiguracao.get<Configuracao[]>(`/listar`)).data
+            return(await this.axiosConfiguracao.get<Configuracao[]>(`/lista`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async cadastrar(configuracao: Configuracao) : Promise<void>{
+    public async cadastrar(configuracao: Configuracao) : Promise<string>{
         try{
-            return(await this.axiosConfiguracao.post(`/`, configuracao)).data
+            return(await this.axiosConfiguracao.post<string>(``, configuracao)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(configuracao: Configuracao) : Promise<void>{
+    public async editar(id: number, configuracao: Configuracao) : Promise<string>{
         try{
-            return(await this.axiosConfiguracao.put(`/`, configuracao)).data
+            return(await this.axiosConfiguracao.put<string>(`/${id}`, configuracao)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async deletar(configuracao: Configuracao) : Promise<string>{
+    public async excluir(id: number) : Promise<string>{
         try{
-            return(await this.axiosConfiguracao.delete(`/$(id)`)).data
+            return(await this.axiosConfiguracao.delete<string>(`/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }    
 }
+
+export default new ConfiguracaoClient;

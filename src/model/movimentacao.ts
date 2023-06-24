@@ -19,8 +19,4 @@ export class Movimentacao extends AbstractEntity
     tempoMulta!: number
     valorTotal!: number
     
-    constructor(){
-        super()
-        this.ativo=true
-    }
 }

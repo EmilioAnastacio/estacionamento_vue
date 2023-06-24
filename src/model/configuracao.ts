@@ -10,10 +10,7 @@ export class Configuracao extends AbstractEntity
     vagasMoto!: number
     vagasCarro!: number
     vagasVa!: number
+    valorHora!: number
+    valorMinutoMulta!: number
     
-    constructor(){
-        super()
-        this.ativo=true
-    }
-
 }
