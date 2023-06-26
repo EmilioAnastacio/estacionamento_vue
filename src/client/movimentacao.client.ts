@@ -1,4 +1,5 @@
 import { Movimentacao } from "@/model/movimentacao";
+import { Relatorio } from "@/model/relatorio";
 import axios, {AxiosInstance} from "axios";
 
 class MovimentacaoClient{
@@ -44,14 +45,13 @@ class MovimentacaoClient{
         }
     }
 
-    public async relatorio(id: number) : Promise<string>{
+    public async finalizar(id: number) : Promise<Relatorio>{
         try{
-            return(await this.axiosMovimentacao.put<string>(`/${id}`)).data
+            return(await this.axiosMovimentacao.put<Relatorio>(`/finalizar/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
-
 
     public async excluir(id: number) : Promise<string>{
         try{

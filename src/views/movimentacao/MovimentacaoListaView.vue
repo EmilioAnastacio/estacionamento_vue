@@ -44,7 +44,7 @@
             <span class="badge bg-warning btn text-align-center col">EDITAR</span>
           </RouterLink>
           <RouterLink type="button" class="btn text-align-center col-md-2" 
-            :to="{name: 'movimentacao-cadastrar-excluir', query: {id: item.id, form: 'excluir'}}">
+            :to="{name: 'relatorio-view', query: {id: item.id}}">
             <span class="badge bg-danger btn text-align-center col">FINZALIZAR</span>
           </RouterLink>
         </div>

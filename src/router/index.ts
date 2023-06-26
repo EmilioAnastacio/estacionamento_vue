@@ -73,6 +73,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'movimentacao-cadastrar-excluir',
         component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoCadastrar.vue'),
       },
+      {
+        path: '/finalizar',
+        name: 'movimentacao-finalizar',
+        component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/MovimentacaoCadastrar.vue'),
+      },
     ]
   },
 
@@ -156,6 +161,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import(/* webpackChunkName: "about" */ '../views/configuracao/ConfiguracaoCadastrar.vue'),
       },
     ]
+  },
+
+  {
+    path: '/relatorio',
+    name: 'relatorio-view',
+    component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/FinalizarView.vue')
   },
 
 
