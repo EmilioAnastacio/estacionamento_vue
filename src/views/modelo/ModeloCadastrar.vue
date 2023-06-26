@@ -8,14 +8,26 @@
       <h1 class="col mt-2">Cadastrar Modelo</h1>
     </div>
 
+    <div v-if="mensagem.ativo" class="row">
+      <div class="col-md-12 text-start">
+        <div :class="mensagem.css" role="alert">
+          <strong>{{ mensagem.titulo }}</strong> {{ mensagem.mensagem }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+
     <div class="nome col">
       <label for="recipient-name" class=" row m-auto col-form-label">Nome do Modelo:</label>
       <input type="text" :disabled="this.form === 'excluir' ? '' : disabled" class="form-control" v-model="modelo.nome">
     </div>
+    
     <div class="nome col">
       <label for="recipient-name" class=" row m-auto col-form-label">Nome da Marca:</label>
-      <select type="text" v-model="modelo.marca"><option v-for="item in marca" :value="item">{{ item.nome }} </option></select>
-      <input type="text" :disabled="this.form === 'excluir' ? '' : disabled" class="form-control" v-model="modelo.marca">
+      <select type="text" class="row ms-1" v-model="modelo.marca">
+        <option v-for="item in marca" :disabled="this.form === 'excluir' ? '' : disabled" class="form-control"
+        :value="item">{{ item.nome }}</option>
+      </select>
     </div>
 
     <div class="col d-flex align-items-center justify-content-center">

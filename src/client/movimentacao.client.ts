@@ -1,7 +1,8 @@
 import { Movimentacao } from "@/model/movimentacao";
+import { Relatorio } from "@/model/relatorio";
 import axios, {AxiosInstance} from "axios";
 
-export class MovimentacaoClient{
+class MovimentacaoClient{
 
     private axiosMovimentacao : AxiosInstance;
 
@@ -14,41 +15,51 @@ export class MovimentacaoClient{
 
     public async findById(id: number) : Promise<Movimentacao>{
         try{
-            return(await this.axiosMovimentacao.get<Movimentacao>(`/$(id)`)).data
+            return(await this.axiosMovimentacao.get<Movimentacao>(`/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async listarAll() : Promise<Movimentacao[]>{
+    public async listaAll() : Promise<Movimentacao[]>{
         try{
-            return(await this.axiosMovimentacao.get<Movimentacao[]>(`/listar`)).data
+            return(await this.axiosMovimentacao.get<Movimentacao[]>(`/lista`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async cadastrar(movimentacao: Movimentacao) : Promise<void>{
+    public async cadastrar(movimentacao: Movimentacao) : Promise<string>{
         try{
-            return(await this.axiosMovimentacao.post(`/`, movimentacao)).data
+            return(await this.axiosMovimentacao.post<string>(``, movimentacao)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(movimentacao: Movimentacao) : Promise<void>{
+    public async editar(id: number, movimentacao: Movimentacao) : Promise<string>{
         try{
-            return(await this.axiosMovimentacao.put(`/`, movimentacao)).data
+            return(await this.axiosMovimentacao.put<string>(`/${id}`, movimentacao)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }
 
-    public async deletar(movimentacao: Movimentacao) : Promise<string>{
+    public async finalizar(id: number) : Promise<Relatorio>{
         try{
-            return(await this.axiosMovimentacao.delete(`/$(id)`)).data
+            return(await this.axiosMovimentacao.put<Relatorio>(`/finalizar/${id}`)).data
+        }catch(error:any){
+            return Promise.reject(error.response)
+        }
+    }
+
+    public async excluir(id: number) : Promise<string>{
+        try{
+            return(await this.axiosMovimentacao.delete<string>(`/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }
     }    
 }
+
+export default new MovimentacaoClient;
