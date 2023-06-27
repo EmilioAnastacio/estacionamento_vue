@@ -38,11 +38,6 @@
       <input type="text" :disabled="this.form === 'excluir' ? '' : disabled" class="form-control" v-model="movimentacao.entrada">
     </div>
 
-    <div class="nome col">
-      <label for="recipient-name" class=" row m-auto col-form-label">Saida:</label>
-      <input type="text" :disabled="this.form === 'excluir' ? '' : disabled" class="form-control" v-model="movimentacao.saida">
-    </div>
-
     <div class="col d-flex align-items-center justify-content-center">
     <router-link class="col col-md-1" to="/movimentacao">
         <button type="button" class="btn btn-success">Voltar</button>

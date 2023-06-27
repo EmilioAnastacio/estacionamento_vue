@@ -31,12 +31,12 @@
       <th class="col-md-1">{{ item.id }}</th>
       <th class="col-md-1">
           <span v-if="item.ativo" class="badge bg-primary text-align-center col"> ATIVO</span> 
-          <span v-if="!item.ativo" class="badge bg-danger text-align-center col"> INATIVO</span>
+          <span v-if="!item.ativo" class="badge bg-danger text-align-center col"> FINALIZADA</span>
       </th>
-      <th class="col-md-3 ">{{ item.condutor.nomeCondutor }}</th>
       <th class="col-md-1"> {{ item.veiculo.placa }}</th>
-      <th class="col-md-1"> {{ item.entrada }}</th>
-      <th class="col-md-1"> {{ item.saida }}</th>
+      <th class="col-md-2 ">{{ item.condutor.nomeCondutor }}</th>
+      <th class="col-md-2"> {{ item.entrada }}</th>
+      <th class="col-md-2"> {{ item.saida }}</th>
       <th class="col-md-2">
         <div class="btn-group" role="group">
           <RouterLink type="button" class="btn text-align-center col-md-2" 

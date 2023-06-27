@@ -2,6 +2,8 @@
 
 <H1 class="col-md-1">Recibo</H1>
 
+<RouterLink to="/movimentacao" type="button" class="btn btn-success">Voltar as Movimentações</RouterLink>
+
 <div class="col-12">
          <div class="">
             <div class="col-md-5">
@@ -24,6 +26,16 @@
              
             <div class="col-md-5 mt-4" >
                 <span>Veiculo: <span>{{ relatorio.veiculo }}</span></span>
+                <!-- <span> nome do condutor: <span> {{ relatorio.condutor }}</span></span> -->
+            </div>
+
+            <div class="col-md-5 mt-4" >
+                <span>Quantidade de Horas: <span>{{ movimentacao.tempoHora }}</span></span>
+                <!-- <span> nome do condutor: <span> {{ relatorio.condutor }}</span></span> -->
+            </div>
+
+            <div class="col-md-5 mt-4" >
+                <span>Valor a ser pago: <span>R${{ movimentacao.valorHoraTotal }}</span></span>
                 <!-- <span> nome do condutor: <span> {{ relatorio.condutor }}</span></span> -->
             </div>
 

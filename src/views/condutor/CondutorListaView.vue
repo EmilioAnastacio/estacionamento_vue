@@ -35,11 +35,11 @@
               <span v-if="item.ativo" class="badge bg-primary text-align-center col"> ATIVO</span> 
               <span v-if="!item.ativo" class="badge bg-danger text-align-center col"> INATIVO</span>
           </th>
-          <th class="col-md-6 text-start">{{ item.nomeCondutor }}</th>
-          <th class="col-md-3 text-start">{{ item.cpf }}</th>
-          <th class="col-md-3 text-start">{{ item.telefone }}</th>
-          <th class="col-md-6 text-start">{{ item.tempoPago }}</th>
-          <th class="col-md-6 text-start">{{ item.tempoDesconto }}</th>
+          <th class="col-md-3 ">{{ item.nomeCondutor }}</th>
+          <th class="col-md-3 ">{{ item.cpf }}</th>
+          <th class="col-md-3 ">{{ item.telefone }}</th>
+          <th class="col-md-6 ">{{ item.tempoPago }}</th>
+          <th class="col-md-6 ">{{ item.tempoDesconto }}</th>
           <th class="col-md-2">
             <div class="btn-group" role="group">
               <RouterLink type="button" class="btn text-align-center col-md-2" 
