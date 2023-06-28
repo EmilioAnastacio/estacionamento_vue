@@ -163,11 +163,11 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
 
-  {
-    path: '/relatorio',
-    name: 'relatorio-view',
-    component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/FinalizarView.vue')
-  },
+  // {
+  //   path: '/relatorio',
+  //   name: 'relatorio-view',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/movimentacao/FinalizarView.vue')
+  // },
 
 
 ]

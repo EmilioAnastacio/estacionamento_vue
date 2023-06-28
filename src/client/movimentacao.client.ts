@@ -45,9 +45,9 @@ class MovimentacaoClient{
         }
     }
 
-    public async finalizar(id: number) : Promise<Relatorio>{
+    public async finalizar(id: number) : Promise<string>{
         try{
-            return(await this.axiosMovimentacao.put<Relatorio>(`/finalizar/${id}`)).data
+            return(await this.axiosMovimentacao.put<string>(`/finalizar/${id}`)).data
         }catch(error:any){
             return Promise.reject(error.response)
         }

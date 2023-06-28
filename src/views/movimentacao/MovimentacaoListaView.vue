@@ -31,7 +31,8 @@
       <th class="col-md-1">{{ item.id }}</th>
       <th class="col-md-1">
           <span v-if="item.ativo" class="badge bg-primary text-align-center col"> ATIVO</span> 
-          <span v-if="!item.ativo" class="badge bg-danger text-align-center col"> FINALIZADA</span>
+          <span v-else-if="!item.ativo " class="badge bg-danger text-align-center col"> INATIVO</span>
+          <span v-else-if="!item.relatorio" class="badge bg-warning text-align-center col"> FINALIZADO</span>
       </th>
       <th class="col-md-1"> {{ item.veiculo.placa }}</th>
       <th class="col-md-2 ">{{ item.condutor.nomeCondutor }}</th>
@@ -44,8 +45,12 @@
             <span class="badge bg-warning btn text-align-center col">EDITAR</span>
           </RouterLink>
           <RouterLink type="button" class="btn text-align-center col-md-2" 
-            :to="{name: 'relatorio-view', query: {id: item.id}}">
-            <span class="badge bg-danger btn text-align-center col">FINZALIZAR</span>
+            :to="{name: 'movimentacao-cadastrar-excluir', query: {id: item.id, form: 'excluir'}}">
+            <span class="badge bg-danger btn text-align-center col">EXCLUIR</span>
+          </RouterLink>
+          <RouterLink type="button" class="btn text-align-center col-md-2" 
+            :to="{name: 'movimentacao-finalizar', query: {id: item.id, form: 'finalizar'}}">
+            <span class="badge bg-primary btn text-align-center col">FINZALIZAR</span>
           </RouterLink>
         </div>
       </th>
@@ -87,7 +92,7 @@ export default defineComponent({
 
     findAll(){
       movimentacaoClient.listaAll().then(sucess =>{
-            console.log("OI")
+            console.log()
             this.movimentacaoList =sucess
         })
         .catch(error =>{

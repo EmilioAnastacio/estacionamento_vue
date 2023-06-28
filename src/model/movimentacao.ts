@@ -18,5 +18,5 @@ export class Movimentacao extends AbstractEntity
     valorHoraMulta!: number
     tempoMulta!: number
     valorTotal!: number
-    
+    relatorio: boolean = false;
 }

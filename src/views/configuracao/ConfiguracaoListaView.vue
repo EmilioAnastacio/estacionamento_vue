@@ -2,7 +2,7 @@
 
   <NavBar></NavBar>
 
-<div class="col-md-10 offset-md-1">
+<div class="col-md-12" >
 
   <div class="row text-start">
       <h2 class="col-md-10">Lista de Configuração</h2>

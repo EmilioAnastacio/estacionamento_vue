@@ -9,9 +9,34 @@
     </div>
 
     <div v-if="mensagem.ativo" class="row">
-      <div class="col-md-12 text-start">
+      <div class="col-md-12 text-start" v-if="this.form != 'finalizar'">
         <div :class="mensagem.css" role="alert">
           <strong>{{ mensagem.titulo }}</strong> {{ mensagem.mensagem }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="col-md-12 text-start" v-if="this.form === 'finalizar'">
+        <div :class="mensagem.css" role="alert">
+          <span>CONDUTOR: {{ mensagem.mensagem.condutor.nomeCondutor }}</span>
+          <br>
+          <span> Veiculo: {{ mensagem.mensagem.veiculo.placa }}</span>
+          <br>
+          <span> Entrada: {{ mensagem.mensagem.entrada }}</span>
+          <br>
+          <span> Saida: {{ mensagem.mensagem.saida }}</span>
+          <br>
+          <span> Horas Totais: {{ mensagem.mensagem.horas }}</span>
+          <br>
+          <span> Valor Desconto: {{ mensagem.mensagem.valorDesconto }}</span>
+          <br>
+          <span> Tempo Desconto: {{ mensagem.mensagem.horasDesconto }}</span>
+          <br>
+          <span> Tempo Multa: {{ mensagem.mensagem.tempoHoraMulta }}</span>
+          <br>
+          <span> Valor Multa: {{ mensagem.mensagem.valorMulta }}</span>
+          <br>
+          <span> Valor Total: {{ mensagem.mensagem.valor }}</span>
+          
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       </div>
@@ -44,7 +69,8 @@
     </router-link>
     <button type="button" v-if="this.form === undefined" class="btn btn-success mt-2 mb-2" @click="onClickCadastrar()"> Cadastrar</button>
     <button type="button" v-if="this.form === 'editar'" class="btn btn-warning mt-2 mb-2" @click="onClickEditar()"> Editar</button>
-    <button type="button" v-if="this.form === 'excluir'" class="btn btn-danger mt-2 mb-2" @click="onClickExcluir()"> Finalizar</button>
+    <button type="button" v-if="this.form === 'excluir'" class="btn btn-warning mt-2 mb-2" @click="onClickExcluir()"> Excluir</button>
+    <button type="button" v-if="this.form === 'finalizar'" class="btn btn-danger mt-2 mb-2" @click="onClickFinalizar(),clickFinalizar()"> Finalizar</button>
   </div>
 
   </div>
@@ -221,6 +247,7 @@
     onClickExcluir(){
       MovimentacaoClient.excluir(this.movimentacao.id).then(sucess =>{
             this.movimentacao = new Movimentacao();
+            this.movimentacao.ativo = false;
 
             this.mensagem.ativo = true;
             this.mensagem.mensagem = sucess;
@@ -237,6 +264,32 @@
           this.mensagem.css = "alert alert-danger alert-dismissible fade show";
         })
     },
+
+    clickFinalizar(){
+      this.movimentacao.relatorio = true;
+      console.log("OIA O TRUE AIII");
+      console.log(this.movimentacao.relatorio)
+    },
+
+    onClickFinalizar(){
+      MovimentacaoClient.finalizar(this.movimentacao.id).then(sucess =>{
+        this.movimentacao = new Movimentacao();
+        this.movimentacao.relatorio = true; 
+
+            this.mensagem.ativo = true;
+            this.mensagem.mensagem = sucess;
+            this.mensagem.titulo = "Movimentacao Finalizada com sucesso!";
+            this.mensagem.css = "alert alert-success alert-dismissible fade show";
+      })
+      .catch(error =>{
+          console.log(error)
+
+          this.mensagem.ativo = true;
+          this.mensagem.mensagem = error;
+          this.mensagem.titulo = "Erro, Não foi possivel finalizar a Movimentacao";
+          this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+        })
+    }
     }
   });
   

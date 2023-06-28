@@ -23,6 +23,11 @@
                 <span>Condutor: <span>{{ relatorio.condutor }}</span></span>
                 <!-- <span> nome do condutor: <span> {{ relatorio.condutor }}</span></span> -->
             </div>
+
+            <!-- <div class="col-md-5 mt-4" >
+                <span>CondutorMOviMENTACAO: <span>{{ movimentacao.condutor.nomeCondutor }}</span></span>
+                 <span> nome do condutor: <span> {{ relatorio.condutor }}</span></span> 
+            </div>  -->
              
             <div class="col-md-5 mt-4" >
                 <span>Veiculo: <span>{{ relatorio.veiculo }}</span></span>
@@ -60,15 +65,22 @@ import NavBar from '@/components/NavBar.vue'; // @ is an alias to /src
 import { Movimentacao } from '@/model/movimentacao';
 import MovimentacaoClient from '@/client/movimentacao.client';
 
+import { Veiculo } from '@/model/veiculo';
+import VeiculoClient from '@/client/veiculo.client';
+
+import { Condutor } from '@/model/condutor';
+import CondutorClient from '@/client/condutor.client';
+
 import { Relatorio } from '@/model/relatorio';
 
 export default defineComponent({
   name: 'RelatorioView',
   data() {
     return {
-      relatorioList: new Array<Movimentacao>(),
       movimentacao: new Movimentacao(),
-      relatorio: new Relatorio()
+      relatorio: new Relatorio(),
+      condutor: new Array<Condutor>(),
+      veiculo: new Array<Veiculo>(),
 
     };
   },
@@ -84,9 +96,12 @@ export default defineComponent({
   mounted(){
     
     if(this.id !== undefined){
-        this.findById(Number(this.id))
+        this.findById(Number(this.id));
         this.onClickFechaRelatorio(Number(this.id));
     }
+
+    this.listAllCondutor();
+    this.listAllVeiculo();
   },
 
   methods:{
@@ -103,12 +118,30 @@ export default defineComponent({
 
     onClickFechaRelatorio(id: number){
         MovimentacaoClient.finalizar(id).then(sucess =>{
-            this.relatorio = sucess
+            //this.relatorio = sucess
         })
         .catch(error =>{
             console.log(error)
         })
     },
+
+    listAllVeiculo(){
+        VeiculoClient.listaAll().then(sucess =>{
+            this.veiculo = sucess;
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    },
+
+    listAllCondutor(){
+        CondutorClient.listaAll().then(sucess =>{
+            this.condutor = sucess;
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
   }
 
   // EMILIO
